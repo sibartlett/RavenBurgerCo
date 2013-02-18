@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Globalization;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Raven.Client.Embedded;
@@ -10,9 +11,11 @@ namespace RavenBurgerCo
     public class MvcApplication : System.Web.HttpApplication
     {
         public static EmbeddableDocumentStore DocumentStore { get; set; }
+        public static NumberFormatInfo NFI = new NumberFormatInfo {NumberDecimalSeparator = "."};
 
         protected void Application_Start()
         {
+       
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

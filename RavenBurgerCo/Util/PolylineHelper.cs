@@ -13,7 +13,7 @@ namespace RavenBurgerCo.Util
 
         public static string GetWkt(List<GeoPoint> polyline)
         {
-            var points = polyline.Select(x => x.Longitude + " " + x.Latitude).ToArray();
+            var points = polyline.Select(x => x.Longitude.ToString(MvcApplication.NFI) + " " + x.Latitude.ToString(MvcApplication.NFI)).ToArray();
             return "LINESTRING (" + string.Join(", ", points) + ")";
         }
 
