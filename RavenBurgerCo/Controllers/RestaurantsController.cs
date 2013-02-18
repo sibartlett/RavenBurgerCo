@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web.Http;
 using Raven.Abstractions.Indexing;
@@ -42,7 +43,7 @@ namespace RavenBurgerCo.Controllers
             if (!delivery)
                 return Get(latitude, longitude);
 
-            var point = "POINT (" + longitude + " " + latitude + ")";
+            var point = "POINT (" + longitude.ToString(MvcApplication.NFI) + " " + latitude.ToString(MvcApplication.NFI) + ")";
 
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
@@ -70,7 +71,7 @@ namespace RavenBurgerCo.Controllers
 
         public IEnumerable<object> Get(double north, double east, double west, double south)
         {
-            var rectangle = string.Format("{0:F6} {1:F6} {2:F6} {3:F6}", west, south, east, north);
+            var rectangle = string.Format(MvcApplication.NFI,"{0:F6} {1:F6} {2:F6} {3:F6}", west, south, east, north);
 
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {

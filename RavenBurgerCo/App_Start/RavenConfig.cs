@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using CsvHelper;
+using CsvHelper.Configuration;
 using Raven.Client.Document;
 using Raven.Client.Embedded;
 using Raven.Client.Indexes;
@@ -32,7 +33,7 @@ namespace RavenBurgerCo
         public static void LoadRestaurants(string csvFile, BulkInsertOperation bulkInsert)
         {
             using (var reader = new StreamReader(csvFile))
-            using (var csv = new CsvReader(reader))
+            using (var csv = new CsvReader(reader,new CsvConfiguration{UseInvariantCulture = true}))
             {
                 var restaurants = csv.GetRecords<Restaurant>();
                 foreach (var restaurant in restaurants)
