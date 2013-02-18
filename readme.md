@@ -11,7 +11,7 @@ This project aims to demonstrate some usages of RavenDB's spatial features.
 
 ## Scenario
 
-Raven Burger Co is a chain of fast food restaurants, based in the United Kingdom. Their speciality is burgers made with raven meat. All their restaurants offer eat-n/take-out service, while some offer home delivery, and others offer a drive thru service.
+Raven Burger Co is a chain of fast food restaurants, based in the United Kingdom. Their speciality is burgers made with raven meat. All their restaurants offer eat-in/take-out service, while some offer home delivery, and others offer a drive thru service.
 
 This sample application is their online restaurant locator.
 
