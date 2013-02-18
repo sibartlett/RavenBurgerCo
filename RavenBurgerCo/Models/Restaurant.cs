@@ -1,4 +1,5 @@
-﻿using CsvHelper.Configuration;
+﻿using System.Globalization;
+using CsvHelper.Configuration;
 
 namespace RavenBurgerCo.Models
 {
@@ -19,7 +20,7 @@ namespace RavenBurgerCo.Models
         [CsvField(Ignore = true)]
         public string LocationWkt
         {
-            get { return "POINT (" + Longitude + " " + Latitude + ")"; }
+            get { return string.Format(CultureInfo.InvariantCulture, "POINT ({0} {1})", Longitude, Latitude); }
         }
     }
 }
