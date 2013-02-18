@@ -1,0 +1,61 @@
+﻿@using RavenBurgerCo.Util
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Raven Burger Co - UK Branch Locator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="/Content/bootstrap.css" />
+    <link rel="stylesheet" href="/Scripts/leaflet/leaflet.css" />
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+    <script type="text/javascript" src="/Scripts/leaflet/leaflet.js"></script>
+    <script type="text/javascript" src="/Scripts/leaflet/leaflet.google.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="/Scripts/app_global.js"></script>
+    <script type="text/javascript" src="/Scripts/app_location_selector.js"></script>
+    @RenderSection("head", false)
+    <style type="text/css">
+        #controls {
+            margin: 0;
+            border-left: 0;
+            border-right: 0;
+            border-radius: 0;
+        }
+        #controls .location-label label {
+            text-align: right;
+            font-style: italic;
+            line-height: 28px;
+            font-size: 14px;
+        }
+        #controls .location-button {
+            text-align: right;
+        }
+        #controls .location-button a {
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-static-top" style="margin: 0" id="header">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="brand" href="/">Raven Burger Co</a>
+                <p class="navbar-text pull-right">
+                    <a href="@ViewBag.RavenStudioUrl" target="_blank" class="navbar-link">RavenDB Studio</a>
+                </p>
+                <ul class="nav">
+                    @Html.MenuItem("Map", "Map", "Home")
+                    @Html.MenuItem("Eat-in", "Eatin", "Home")
+                    @Html.MenuItem("Delivery", "Delivery", "Home")
+                    @Html.MenuItem("Drive Thru", "DriveThru", "Home")
+                </ul>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+</body>
+</html>

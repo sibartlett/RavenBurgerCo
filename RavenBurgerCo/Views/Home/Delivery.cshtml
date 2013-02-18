@@ -1,0 +1,23 @@
+﻿@section head {
+    <link rel="stylesheet" href="/Content/select2.css" />
+    <script type="text/javascript" src="/Scripts/leaflet/wicket.src.js"></script>
+    <script type="text/javascript" src="/Scripts/leaflet/wicket-leaflet.src.js"></script>
+    <script type="text/javascript" src="/Scripts/select2.js"></script>
+    <script type="text/javascript" src="/Scripts/app_delivery.js"></script>
+}
+
+<div class="well" id="controls">
+    <div class="row-fluid location">
+        <div class="span1 location-label">
+            <label>Location</label>
+        </div>
+        <div class="span1 location-button">
+            <a class="btn" href="#"><i class="icon-map-marker"></i></a>
+        </div>
+        <div class="span10">
+            <input type="hidden" id="location" style="width:100%" />
+        </div>
+    </div>
+</div>
+
+<div id="map"></div>

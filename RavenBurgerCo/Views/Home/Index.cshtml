@@ -1,0 +1,97 @@
+﻿@section head {
+    <script type="text/javascript">
+        $(function () {
+
+            $(window).resize(function () {
+                var h = $(window).height() - $('#header').outerHeight();
+                var r = h - $('#rhino').outerHeight();
+                var t = h - $('#text').outerHeight();
+                
+                if (r > 0) {
+                    $('#rhino').css('padding-top', r / 2);
+                } else {
+                    $('#rhino').css('padding-top', 0);
+                }
+                
+                if (t > 0) {
+                    $('#text').css('padding-top', t / 2);
+                } else {
+                    $('#text').css('padding-top', 0);
+                }
+
+            });
+
+            setTimeout(function() {
+                $(window).trigger('resize');
+            }, 200);
+
+        });
+    </script>
+}
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span5" id="rhino">
+            <img src="/Content/RavenBurgerCo.png" width="100%" />
+        </div>
+        <div class="span7" id="text">
+            
+            <div class="row-fluid" style="margin-bottom: 30px">
+                <div class="span12">
+                    <div class="page-header">
+                        <h1>Raven Burger Co <small>UK Restaurant Locator</small></h1>
+                    </div>
+                    <blockquote>
+                        <p>All our burgers are made from 100% raven meat...</p>
+                    </blockquote>
+                    <p>This sample application demonstrates some of the geospatial features that come with RavenDB. Please read the readme file for more info!</p>
+                </div>
+            </div>
+
+            <div class="well well-small">
+                <div class="row-fluid">
+                    <div class="span3">
+                        @Html.ActionLink("Browse a map", "Map", null, new { @class = "btn btn-block btn-large" })
+                    </div>
+                    <div class="span9">
+                        <p>Pan and zoom a map, to browse all of our restaurants.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="well well-small">
+                <div class="row-fluid">
+                    <div class="span3">
+                        @Html.ActionLink("Eat-in/Take-out", "Eatin", null, new { @class = "btn btn-block btn-large" })
+                    </div>
+                    <div class="span9">
+                        <p>Find the resaurants closest to you.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="well well-small">
+                <div class="row-fluid">
+                    <div class="span3">
+                        @Html.ActionLink("Home Delivery", "Delivery", null, new { @class = "btn btn-block btn-large" })
+                    </div>
+                    <div class="span9">
+                        <p>Find restaurants that offer delivery to your door.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="well well-small">
+                <div class="row-fluid">
+                    <div class="span3">
+                        @Html.ActionLink("Drive Thru", "DriveThru", null, new { @class = "btn btn-block btn-large" })
+                    </div>
+                    <div class="span9">
+                        <p>Tell us where you're driving, and we'll suggest restaurants that offer a drive thru service on your route.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Select2.js</id>
+    <version>3.2.1</version>
+    <title />
+    <authors>Igor Vaynberg (Packaged by Jeremy Howard)</authors>
+    <owners>Igor Vaynberg (Packaged by Jeremy Howard)</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>http://ivaynberg.github.com/select2/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A jQuery based replacement for select boxes. It supports searching, remote data sets, and infinite scrolling of results.</description>
+    <language>en-US</language>
+    <dependencies>
+      <dependency id="jQuery" version="1.7" />
+    </dependencies>
+    <references />
+  </metadata>
+</package>
