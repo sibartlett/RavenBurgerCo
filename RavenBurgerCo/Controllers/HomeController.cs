@@ -9,7 +9,7 @@ namespace RavenBurgerCo.Controllers
         {
             base.OnActionExecuting(filterContext);
 
-            var builder = new UriBuilder(Request.Url);
+            var builder = new UriBuilder(Request.Url.Host);
             builder.Port = MvcApplication.DocumentStore.HttpServer.Configuration.Port;
             ViewBag.RavenStudioUrl = builder.Uri.ToString();
         }
