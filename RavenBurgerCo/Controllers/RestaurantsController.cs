@@ -43,7 +43,7 @@ namespace RavenBurgerCo.Controllers
             if (!delivery)
                 return Get(latitude, longitude);
 
-            var point = "POINT (" + longitude.ToString(MvcApplication.NFI) + " " + latitude.ToString(MvcApplication.NFI) + ")";
+            var point = string.Format(CultureInfo.InvariantCulture, "POINT ({0} {1})", longitude, latitude);
 
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
@@ -71,7 +71,7 @@ namespace RavenBurgerCo.Controllers
 
         public IEnumerable<object> Get(double north, double east, double west, double south)
         {
-            var rectangle = string.Format(MvcApplication.NFI,"{0:F6} {1:F6} {2:F6} {3:F6}", west, south, east, north);
+            var rectangle = string.Format(CultureInfo.InvariantCulture, "{0:F6} {1:F6} {2:F6} {3:F6}", west, south, east, north);
 
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {

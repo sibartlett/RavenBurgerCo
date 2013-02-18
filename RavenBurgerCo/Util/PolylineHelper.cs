@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace RavenBurgerCo.Util
@@ -13,7 +14,7 @@ namespace RavenBurgerCo.Util
 
         public static string GetWkt(List<GeoPoint> polyline)
         {
-            var points = polyline.Select(x => x.Longitude.ToString(MvcApplication.NFI) + " " + x.Latitude.ToString(MvcApplication.NFI)).ToArray();
+            var points = polyline.Select(x => string.Format(CultureInfo.InvariantCulture, "{0} {1}", x.Longitude, x.Latitude)).ToArray();
             return "LINESTRING (" + string.Join(", ", points) + ")";
         }
 

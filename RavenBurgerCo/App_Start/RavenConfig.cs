@@ -33,7 +33,7 @@ namespace RavenBurgerCo
         public static void LoadRestaurants(string csvFile, BulkInsertOperation bulkInsert)
         {
             using (var reader = new StreamReader(csvFile))
-            using (var csv = new CsvReader(reader,new CsvConfiguration{UseInvariantCulture = true}))
+            using (var csv = new CsvReader(reader, new CsvConfiguration {UseInvariantCulture = true}))
             {
                 var restaurants = csv.GetRecords<Restaurant>();
                 foreach (var restaurant in restaurants)
