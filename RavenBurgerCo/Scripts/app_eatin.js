@@ -14,16 +14,18 @@
 
     $('#location').change(function () {
         var latlng = $('#location').locationSelector('val');
-        map.setView(latlng, 12);
-        
+
+        var outerCircle = L.circle(latlng, 25000, { color: '#ff0000', fillOpacity: 0 });
+        map.fitBounds(outerCircle.getBounds());
+
         resultsLayer.clearLayers();
-        
-        resultsLayer.addLayer(L.circle(latlng, 25000, { color: '#ff0000', fillOpacity: 0 }));
+        resultsLayer.addLayer(outerCircle);
         resultsLayer.addLayer(L.circle(latlng, 15000, { color: '#ff0000', fillOpacity: 0.1 }));
         resultsLayer.addLayer(L.circle(latlng, 10000, { color: '#ff0000', fillOpacity: 0.3 }));
         resultsLayer.addLayer(L.circle(latlng, 5000, { color: '#ff0000', fillOpacity: 0.5 }));
         resultsLayer.addLayer(L.circleMarker(latlng, { color: '#ff0000', fillOpacity: 1, opacity: 1 }));
-        
+
+
         $.get('/api/restaurants', {
             latitude: latlng[0],
             longitude: latlng[1]
