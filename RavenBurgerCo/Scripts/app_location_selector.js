@@ -54,6 +54,7 @@
 
                     button.on('click', function () {
                         button.toggleClass('btn-success');
+                        $('.leaflet-container').toggleClass('location-selector');
                     });
 
                     map.on('click', function (e) {
@@ -64,6 +65,7 @@
                             });
                             $this.trigger('change');
                             button.removeClass('btn-success');
+                            $('.leaflet-container').removeClass('location-selector');
                         }
                     });
                 }
