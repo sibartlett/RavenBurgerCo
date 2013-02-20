@@ -10,7 +10,8 @@
         maxBounds: L.latLngBounds([49, 15], [60, -25])
     });
 
-    var loadMarkers = function() {
+    var loadMarkers = function () {
+        resultsLayer.clearLayers();
         if (map.getZoom() > 9) {
             var bounds = map.getBounds();
             $.get('/api/restaurants', {
@@ -19,7 +20,6 @@
                 south: bounds.getSouthEast().lat,
                 west: bounds.getNorthWest().lng,
             }).done(function(restaurants) {
-                resultsLayer.clearLayers();
                 $.each(restaurants, function(index, value) {
                     var marker = L.marker([value.Latitude, value.Longitude])
                         .bindPopup(
@@ -32,8 +32,6 @@
                     resultsLayer.addLayer(marker);
                 });
             });
-        } else {
-            resultsLayer.clearLayers();
         }
     };
 

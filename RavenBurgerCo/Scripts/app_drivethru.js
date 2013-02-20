@@ -91,6 +91,9 @@
                     });
                 }
             });
+        } else if (from || to) {
+            var center = from || to;
+            map.setView(center, 8);
         }
     });
 });
