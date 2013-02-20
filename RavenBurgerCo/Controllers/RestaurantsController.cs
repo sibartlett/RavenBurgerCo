@@ -30,8 +30,6 @@ namespace RavenBurgerCo.Controllers
                                         x.City,
                                         x.PostCode,
                                         x.Phone,
-                                        x.Delivery,
-                                        x.DriveThru,
                                         x.Latitude,
                                         x.Longitude
                                     })
@@ -60,8 +58,6 @@ namespace RavenBurgerCo.Controllers
                                         x.City,
                                         x.PostCode,
                                         x.Phone,
-                                        x.Delivery,
-                                        x.DriveThru,
                                         x.Latitude,
                                         x.Longitude,
                                         x.DeliveryArea
@@ -86,8 +82,6 @@ namespace RavenBurgerCo.Controllers
                                         x.City,
                                         x.PostCode,
                                         x.Phone,
-                                        x.Delivery,
-                                        x.DriveThru,
                                         x.Latitude,
                                         x.Longitude
                                     })
@@ -111,8 +105,6 @@ namespace RavenBurgerCo.Controllers
                                         x.City,
                                         x.PostCode,
                                         x.Phone,
-                                        x.Delivery,
-                                        x.DriveThru,
                                         x.Latitude,
                                         x.Longitude
                                     })

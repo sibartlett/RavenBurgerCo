@@ -9,9 +9,7 @@
         public string Phone { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public bool DriveThru { get; set; }
         public string DriveThruArea { get; set; }
-        public bool Delivery { get; set; }
         public string DeliveryArea { get; set; }
     }
 }
