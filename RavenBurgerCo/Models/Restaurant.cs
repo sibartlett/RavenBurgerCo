@@ -1,7 +1,4 @@
-﻿using System.Globalization;
-using CsvHelper.Configuration;
-
-namespace RavenBurgerCo.Models
+﻿namespace RavenBurgerCo.Models
 {
     public class Restaurant
     {
@@ -16,11 +13,5 @@ namespace RavenBurgerCo.Models
         public string DriveThruArea { get; set; }
         public bool Delivery { get; set; }
         public string DeliveryArea { get; set; }
-
-        [CsvField(Ignore = true)]
-        public string LocationWkt
-        {
-            get { return string.Format(CultureInfo.InvariantCulture, "POINT ({0} {1})", Longitude, Latitude); }
-        }
     }
 }

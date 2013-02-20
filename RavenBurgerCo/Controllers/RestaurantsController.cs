@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Web.Http;
+using Raven.Abstractions.Data;
 using Raven.Abstractions.Indexing;
 using RavenBurgerCo.Indexes;
 using RavenBurgerCo.Models;
@@ -15,7 +16,7 @@ namespace RavenBurgerCo.Controllers
         {
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
-                return session.Query<Restaurant, LocationIndex>()
+                return session.Query<Restaurant, RestaurantIndex>()
                     .Customize(x =>
                                    {
                                        x.WithinRadiusOf(25, latitude, longitude);
@@ -47,7 +48,7 @@ namespace RavenBurgerCo.Controllers
 
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
-                return session.Query<Restaurant, DeliveryIndex>()
+                return session.Query<Restaurant, RestaurantIndex>()
                     .Customize(x => x.RelatesToShape("delivery", point, SpatialRelation.Intersects))
                     // SpatialRelation.Contains is not supported
                     // SpatialRelation.Intersects is OK because we are using a point as the query parameter
@@ -75,8 +76,8 @@ namespace RavenBurgerCo.Controllers
 
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
-                return session.Query<Restaurant, LocationIndex>()
-                    .Customize(x => x.RelatesToShape("location", rectangle, SpatialRelation.Within))
+                return session.Query<Restaurant, RestaurantIndex>()
+                    .Customize(x => x.RelatesToShape(Constants.DefaultSpatialFieldName, rectangle, SpatialRelation.Within))
                     .Take(512)
                     .Select(x => new
                                     {
@@ -100,7 +101,7 @@ namespace RavenBurgerCo.Controllers
 
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
-                return session.Query<Restaurant, DriveThruIndex>()
+                return session.Query<Restaurant, RestaurantIndex>()
                     .Customize(x => x.RelatesToShape("drivethru", lineString, SpatialRelation.Intersects))
                     .Take(512)
                     .Select(x => new

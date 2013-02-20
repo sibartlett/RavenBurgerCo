@@ -147,9 +147,7 @@
     <Content Include="Scripts\app_location_selector.js" />
     <Compile Include="Util\MenuExtensions.cs" />
     <Compile Include="Util\PolylineHelper.cs" />
-    <Compile Include="Indexes\DeliveryIndex.cs" />
-    <Compile Include="Indexes\DriveThruIndex.cs" />
-    <Compile Include="Indexes\LocationIndex.cs" />
+    <Compile Include="Indexes\RestaurantIndex.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
