@@ -17,11 +17,7 @@ namespace RavenBurgerCo.Controllers
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
                 return session.Query<Restaurant, RestaurantIndex>()
-                    .Customize(x =>
-                                   {
-                                       x.WithinRadiusOf(25, latitude, longitude);
-                                       x.SortByDistance();
-                                   })
+                    .Customize(x => x.WithinRadiusOf(25, latitude, longitude))
                     .Take(250)
                     .Select(x => new
                                     {
