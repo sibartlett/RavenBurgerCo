@@ -38,3 +38,7 @@ Restaurants that offer a delivery service have a polygon which defines the area 
 ### 4. Drive Thru
 
 The user can choose an origin and destination for a car journey. They will then be shown the best route for their journey, and restaurants that are no more than 5 km from the route. If the user clicks a restaurant, they will be shown a new route which stops by the drive thru restaurant.
+
+## License
+
+RavenBurgerCo is licensed under the terms of the GNU General Public License Version 3 as published by the Free Software Foundation. 
