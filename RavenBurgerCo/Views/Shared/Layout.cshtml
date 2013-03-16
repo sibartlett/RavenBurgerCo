@@ -60,5 +60,6 @@
         </div>
     </div>
     @RenderBody()
+    @Raven.Client.MvcIntegration.RavenProfiler.CurrentRequestSessions()
 </body>
 </html>

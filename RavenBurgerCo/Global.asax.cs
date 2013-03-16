@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using Raven.Client.Embedded;
+using Raven.Client.MvcIntegration;
 
 namespace RavenBurgerCo
 {
@@ -20,6 +21,7 @@ namespace RavenBurgerCo
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             RavenConfig.ConfigureRaven(this);
+            RavenProfiler.InitializeFor(DocumentStore);
         }
     }
 }
