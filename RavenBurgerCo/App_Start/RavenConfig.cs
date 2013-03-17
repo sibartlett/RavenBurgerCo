@@ -4,6 +4,7 @@ using CsvHelper.Configuration;
 using Raven.Client.Document;
 using Raven.Client.Embedded;
 using Raven.Client.Indexes;
+using Raven.Client.MvcIntegration;
 using RavenBurgerCo.Models;
 
 namespace RavenBurgerCo
@@ -19,6 +20,7 @@ namespace RavenBurgerCo
                                 };
 
             store.Initialize();
+            
             MvcApplication.DocumentStore = store;
 
             IndexCreation.CreateIndexes(typeof(MvcApplication).Assembly, store);
