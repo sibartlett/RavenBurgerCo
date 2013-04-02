@@ -24,9 +24,7 @@
         resultsLayer.addLayer(L.circleMarker(latlng, { color: '#ff0000' }));
         
         var markerClick = function () {
-            var wkt = new Wkt.Wkt();
-            wkt.read(this.data.DeliveryArea);
-            var polygon = wkt.toObject();
+            var polygon = L.geoJson(this.data.DeliveryArea);
             polygonLayer.clearLayers();
             polygonLayer.addLayer(polygon);
             map.fitBounds(polygon.getBounds());
@@ -38,7 +36,7 @@
             delivery: true
         }).done(function (restaurants) {
             $.each(restaurants, function (index, value) {
-                var marker = L.marker([value.Latitude, value.Longitude])
+                var marker = L.geoJson(value.Location)
                     .bindPopup(
                         '<p><strong>' + value.Name + '</strong><br />' +
                         value.Street + '<br />' +

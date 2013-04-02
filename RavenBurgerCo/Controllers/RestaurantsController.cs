@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Geo.Geometries;
+using Geo.IO.Google;
 using System.Web.Http;
-using Raven.Abstractions.Data;
-using Raven.Abstractions.Indexing;
 using RavenBurgerCo.Indexes;
 using RavenBurgerCo.Models;
-using RavenBurgerCo.Util;
 
 namespace RavenBurgerCo.Controllers
 {
@@ -16,20 +15,11 @@ namespace RavenBurgerCo.Controllers
         {
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
-                return session.Query<Restaurant, RestaurantIndex>()
-                    .Customize(x => x.WithinRadiusOf(25, latitude, longitude))
+				return session.Query<Restaurant, RestaurantIndex>()
+					.Spatial(x => x.Location, x => x.WithinRadiusOf(25, longitude, latitude))
+					.TransformWith<RestaurantsTransformer, RestaurantResult>()
                     .Take(250)
-                    .Select(x => new
-                                    {
-                                        x.Name,
-                                        x.Street,
-                                        x.City,
-                                        x.PostCode,
-                                        x.Phone,
-                                        x.Latitude,
-                                        x.Longitude
-                                    })
-                    .ToList();
+					.ToList();
             }
         }
 
@@ -38,72 +28,43 @@ namespace RavenBurgerCo.Controllers
             if (!delivery)
                 return Get(latitude, longitude);
 
-            var point = string.Format(CultureInfo.InvariantCulture, "POINT ({0} {1})", longitude, latitude);
+            var point = new Point(latitude, longitude);
 
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
-                return session.Query<Restaurant, RestaurantIndex>()
-                    .Customize(x => x.RelatesToShape("delivery", point, SpatialRelation.Intersects))
-                    // SpatialRelation.Contains is not supported
-                    // SpatialRelation.Intersects is OK because we are using a point as the query parameter
+				return session.Query<Restaurant, RestaurantIndex>()
+					.Spatial(x => x.DeliveryArea, x => x.Intersects(point))
+					.TransformWith<RestaurantsTransformer, RestaurantResult>()
                     .Take(250)
-                    .Select(x => new
-                                    {
-                                        x.Name,
-                                        x.Street,
-                                        x.City,
-                                        x.PostCode,
-                                        x.Phone,
-                                        x.Latitude,
-                                        x.Longitude,
-                                        x.DeliveryArea
-                                    })
                     .ToList();
             }
         }
 
         public IEnumerable<object> Get(double north, double east, double west, double south)
         {
-            var rectangle = string.Format(CultureInfo.InvariantCulture, "{0:F6} {1:F6} {2:F6} {3:F6}", west, south, east, north);
+            var rectangle = string.Format(CultureInfo.InvariantCulture, "BOX ({0:F6} {1:F6}, {2:F6} {3:F6})", west, south, east, north);
 
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
-                return session.Query<Restaurant, RestaurantIndex>()
-                    .Customize(x => x.RelatesToShape(Constants.DefaultSpatialFieldName, rectangle, SpatialRelation.Within))
-                    .Take(512)
-                    .Select(x => new
-                                    {
-                                        x.Name,
-                                        x.Street,
-                                        x.City,
-                                        x.PostCode,
-                                        x.Phone,
-                                        x.Latitude,
-                                        x.Longitude
-                                    })
+				var aaa = session.Query<Restaurant, RestaurantIndex>()
+					.Spatial(x => x.Location, x => x.Within(rectangle))
+					.TransformWith<RestaurantsTransformer, RestaurantResult>()
+					.Take(512)
                     .ToList();
+	            return aaa;
             }
         }
 
         public IEnumerable<object> Get(string polyline)
         {
-            var lineString = PolylineHelper.ConvertGooglePolylineToWkt(polyline);
+			var lineString = new GooglePolylineEncoder().Decode(polyline);
 
             using (var session = MvcApplication.DocumentStore.OpenSession())
             {
-                return session.Query<Restaurant, RestaurantIndex>()
-                    .Customize(x => x.RelatesToShape("drivethru", lineString, SpatialRelation.Intersects))
+				return session.Query<Restaurant, RestaurantIndex>()
+					.Spatial(x => x.DriveThruArea, x => x.Within(lineString))
+					.TransformWith<RestaurantsTransformer, RestaurantResult>()
                     .Take(512)
-                    .Select(x => new
-                                    {
-                                        x.Name,
-                                        x.Street,
-                                        x.City,
-                                        x.PostCode,
-                                        x.Phone,
-                                        x.Latitude,
-                                        x.Longitude
-                                    })
                     .ToList();
             }
         }

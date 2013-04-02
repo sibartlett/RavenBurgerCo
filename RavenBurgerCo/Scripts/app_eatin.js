@@ -31,7 +31,7 @@
             longitude: latlng[1]
         }).done(function (restaurants) {
             $.each(restaurants, function (index, value) {
-                var marker = L.marker([value.Latitude, value.Longitude])
+                var marker = L.geoJson(value.Location)
                     .bindPopup(
                         '<p><strong>' + value.Name + '</strong><br />' +
                         value.Street + '<br />' +

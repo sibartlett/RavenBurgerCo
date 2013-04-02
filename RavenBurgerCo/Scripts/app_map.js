@@ -20,8 +20,8 @@
                 south: bounds.getSouthEast().lat,
                 west: bounds.getNorthWest().lng,
             }).done(function(restaurants) {
-                $.each(restaurants, function(index, value) {
-                    var marker = L.marker([value.Latitude, value.Longitude])
+                $.each(restaurants, function (index, value) {
+                    var marker = L.geoJson(value.Location)
                         .bindPopup(
                             '<p><strong>' + value.Name + '</strong><br />' +
                                 value.Street + '<br />' +
