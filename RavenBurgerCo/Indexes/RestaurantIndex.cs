@@ -11,14 +11,14 @@ namespace RavenBurgerCo.Indexes
             Map = restaurants => from restaurant in restaurants
                                  select new
                                 {
-									restaurant.Location,
-									restaurant.DeliveryArea,
-									restaurant.DriveThruArea
+                                    restaurant.Location,
+                                    restaurant.DeliveryArea,
+                                    restaurant.DriveThruArea
                                 };
 
-			Spatial(x => x.Location, x => x.Geography.Default());
-			Spatial(x => x.DeliveryArea, x => x.Geography.GeohashPrefixTreeIndex(7));
-			Spatial(x => x.DriveThruArea, x => x.Geography.Default());
+            Spatial(x => x.Location, x => x.Geography.Default());
+            Spatial(x => x.DeliveryArea, x => x.Geography.GeohashPrefixTreeIndex(7));
+            Spatial(x => x.DriveThruArea, x => x.Geography.Default());
         }
     }
 }

@@ -24,7 +24,7 @@ namespace RavenBurgerCo.Models
         public string City { get; set; }
         public string PostCode { get; set; }
         public string Phone { get; set; }
-		public ExpandoObject Location { get; set; }
-		public ExpandoObject DeliveryArea { get; set; }
+        public ExpandoObject Location { get; set; }
+        public ExpandoObject DeliveryArea { get; set; }
     }
 }
