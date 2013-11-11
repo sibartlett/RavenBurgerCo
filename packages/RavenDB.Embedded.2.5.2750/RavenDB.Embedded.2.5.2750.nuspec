@@ -12,6 +12,8 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>This package let you include RavenDB embedded in-process with your application. RavenDB is a document database for the .NET platform, offering a flexible data model design to fit the needs of real world systems.</description>
     <summary>This package let you include RavenDB embedded in-process with your application.</summary>
+    <releaseNotes />
+    <copyright />
     <language>en-US</language>
     <tags>nosql ravendb raven document database embedded</tags>
     <dependencies>

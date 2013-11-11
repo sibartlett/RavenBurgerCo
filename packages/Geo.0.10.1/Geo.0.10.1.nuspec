@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Geo</id>
     <version>0.10.1</version>
@@ -9,12 +9,6 @@
     <projectUrl>https://github.com/sibartlett/Geo</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A geospatial library for .NET</description>
-    <releaseNotes />
-    <copyright />
-    <language />
     <tags>geo spatial gps coordinates wgs84 geography WKT WKB GeoJSON GPX IGC NMEA Garmin PocketFMS SkyDemon</tags>
-    <references>
-      <reference file="Geo.dll" />
-    </references>
   </metadata>
 </package>

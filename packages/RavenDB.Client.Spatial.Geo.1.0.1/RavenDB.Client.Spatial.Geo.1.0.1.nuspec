@@ -10,6 +10,9 @@
     <iconUrl>http://static.ravendb.net/logo-for-nuget.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>GeoJSON and WKT JsonConverters for RavenDB and Geo.</description>
+    <releaseNotes />
+    <copyright />
+    <language />
     <tags>ravendb raven ravendbspatial spatial gps coordinates wgs84 geography geo</tags>
     <dependencies>
       <dependency id="Geo" version="0.10.1" />
