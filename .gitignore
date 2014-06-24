@@ -147,3 +147,6 @@ $RECYCLE.BIN/
 .DS_Store
 
 RavenBurgerCo/App_Data/Database/
+RavenBurgerCo/Analyzers
+RavenBurgerCo/Plugins
+RavenBurgerCo/Raven
