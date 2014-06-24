@@ -47,7 +47,7 @@
     </Reference>
     <Reference Include="Geo, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Geo.0.10.1\lib\portable-win+net40+sl40+wp\Geo.dll</HintPath>
+      <HintPath>..\packages\Geo.0.11.3\lib\portable-win+net40+sl50+wp8\Geo.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
