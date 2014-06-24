@@ -15,9 +15,9 @@
     
     $('#from, #to').locationSelector(map);
 
-    var markerClick = function () {
+    var markerClick = function (e) {
         routeLayer.clearLayers();
-        var latlng = this.getLatLng();
+        var latlng = e.latlng;
         var from = $('#from').locationSelector('val');
         var to = $('#to').locationSelector('val');
 
